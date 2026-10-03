@@ -1,0 +1,19 @@
+
+services:
+  hello-py:
+    build: ./python
+    image: kartikchopra254/hello-python:1.0
+    ports: 
+      - 3000:3000
+    environment:
+      - ENV_VALUE=${ENV_VALUE}
+
+
+  hello-node:
+    build: ./node
+    image: kartikchopra254/hello-node:1.0
+    ports:
+      - 8083:8000
+    environment:
+      - PORT=${PORT}
+      - ENV_VALUE=${ENV_VALUE}
