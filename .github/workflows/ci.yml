@@ -75,6 +75,21 @@ jobs:
           run: |
             aws sts get-caller-identity
 
+        - name: Setup kubectl
+          uses: azure/setup-kubectl@v4
+          with:
+            version: 'latest'
+
+        - name: update the kubeconfig for eks
+          run: |
+            aws eks update-kubeconfig --name my-cluster --region ap-south-1
+
+        - name: verify connection
+          run: kubectl get nodes
+
+        - name: Deploy to aws
+          run: kubectl apply -f app1-hello
+
         
         
 
